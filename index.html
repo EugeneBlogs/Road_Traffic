@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Конспекты ПДД</title>
+    <style>
+        /* Основные стили */
+        :root {
+            --primary: #2563EB;
+            --secondary: #DC2626;
+            --accent: #F59E0B;
+            --light: #F8FAFC;
+            --dark: #1E293B;
+            --success: #10B981;
+            --text: #334155;
+            --border: #E2E8F0;
+        }
+
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: var(--text);
+            background-color: var(--light);
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* Шапка */
+        header {
+            background: linear-gradient(135deg, var(--primary) 0%, #1E40AF 100%);
+            color: white;
+            padding: 40px 0;
+            margin-bottom: 30px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        header::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image:
+                radial-gradient(circle at 20% 30%, rgba(255, 255, 255, 0.1) 0%, transparent 20%),
+                radial-gradient(circle at 80% 70%, rgba(255, 255, 255, 0.1) 0%, transparent 20%);
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin: 0;
+            font-weight: 700;
+            position: relative;
+        }
+
+        .subtitle {
+            text-align: center;
+            font-weight: 400;
+            margin-top: 10px;
+            opacity: 0.9;
+            position: relative;
+        }
+
+        /* Список уроков */
+        .lessons-menu {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            margin-bottom: 40px;
+            overflow: hidden;
+            border: 1px solid var(--border);
+        }
+
+        .lessons-menu h2 {
+            background-color: var(--primary);
+            color: white;
+            padding: 16px 24px;
+            margin: 0;
+            font-size: 1.25rem;
+            font-weight: 600;
+        }
+
+        .lessons-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .lessons-list li {
+            border-bottom: 1px solid var(--border);
+            transition: background-color 0.2s ease;
+        }
+
+        .lessons-list li:last-child {
+            border-bottom: none;
+        }
+
+        .lessons-list a {
+            display: flex;
+            align-items: center;
+            padding: 16px 24px;
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 500;
+            transition: all 0.2s ease;
+        }
+
+        .lessons-list a:hover {
+            background-color: rgba(37, 99, 235, 0.05);
+            color: var(--primary);
+        }
+
+        .lessons-list a::before {
+            content: "";
+            display: inline-block;
+            width: 6px;
+            height: 6px;
+            background-color: var(--primary);
+            border-radius: 50%;
+            margin-right: 12px;
+            transition: all 0.2s ease;
+        }
+
+        .lessons-list a:hover::before {
+            background-color: var(--primary);
+            transform: scale(1.5);
+        }
+
+        /* Урок */
+        .lesson {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            margin-bottom: 40px;
+            overflow: hidden;
+            border: 1px solid var(--border);
+        }
+
+        .lesson-header {
+            background-color: var(--primary);
+            color: white;
+            padding: 20px 24px;
+            position: relative;
+        }
+
+        .lesson-header h2 {
+            margin: 0;
+            font-size: 1.375rem;
+            font-weight: 600;
+        }
+
+        .lesson-content {
+            padding: 24px;
+        }
+
+        .lesson h3 {
+            color: var(--primary);
+            margin-top: 28px;
+            margin-bottom: 16px;
+            font-size: 1.125rem;
+            font-weight: 600;
+            position: relative;
+            padding-left: 16px;
+        }
+
+        .lesson h3::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 4px;
+            background-color: var(--accent);
+            border-radius: 2px;
+        }
+
+        /* Выделения */
+        .definition {
+            color: var(--primary);
+            font-weight: 600;
+            background-color: rgba(37, 99, 235, 0.08);
+            padding: 2px 6px;
+            border-radius: 4px;
+            border-left: 2px solid var(--primary);
+        }
+
+        .important {
+            color: var(--secondary);
+            font-weight: 600;
+            background-color: rgba(220, 38, 38, 0.08);
+            padding: 2px 6px;
+            border-radius: 4px;
+        }
+
+        .underline {
+            text-decoration: underline;
+            text-decoration-color: var(--accent);
+            text-underline-offset: 3px;
+            text-decoration-thickness: 2px;
+        }
+
+        .italic {
+            font-style: italic;
+            color: var(--text);
+            opacity: 0.9;
+        }
+
+        /* Разделители */
+        hr {
+            border: none;
+            height: 1px;
+            background-color: var(--border);
+            margin: 24px 0;
+        }
+
+        /* Фото */
+        .image-placeholder {
+            background-color: #f1f5f9;
+            border: 2px dashed #cbd5e1;
+            padding: 24px;
+            text-align: center;
+            margin: 20px 0;
+            border-radius: 8px;
+            color: #64748b;
+        }
+
+        /* Анимации */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        /* Эффекты при прокрутке */
+        .lesson {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.4s ease, transform 0.4s ease;
+        }
+
+        .lesson.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Адаптивность */
+        @media (max-width: 768px) {
+            .container {
+                padding: 16px;
+            }
+
+            h1 {
+                font-size: 2rem;
+            }
+
+            .lesson-content {
+                padding: 20px 16px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="container">
+            <h1>Конспекты ПДД</h1>
+            <div class="subtitle">Правила дорожного движения</div>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="lessons-menu">
+            <h2>Список уроков</h2>
+            <ul class="lessons-list">
+                <li><a href="#lesson1">Урок 1. Общие положения</a></li>
+                <li><a href="#lesson2">Урок 2. Дорожные знаки</a></li>
+                <li><a href="#lesson3">Урок 3. Дорожная разметка</a></li>
+            </ul>
+        </div>
+
+        <div class="lesson" id="lesson1">
+            <div class="lesson-header">
+                <h2>УРОК 1. ОБЩИЕ ПОЛОЖЕНИЯ.</h2>
+            </div>
+            <div class="lesson-content">
+                <p><span class="definition">Дорога</span> - приспособленная и используемая для движения транспортных
+                    средств полоса земли или поверхность искусственного сооружения.</p>
+                <h3>Структура дороги:</h3>
+                <p>1. <span class="definition">Проезжая часть</span> - асфальтный участок. Дорога может состоять как из
+                    одной, так и из нескольких проезжей частей.</p>
+                <p>2. <span class="definition">Разделительная полоса</span> - участок, отделённый газоном и бордюром или
+                    просто разметкой (тогда расстояние примерно равно ширине автомобиля). Двойная сплошная линия - не
+                    является разделительной полосой (расстояние между двумя сплошными линиями равно ширине одной
+                    сплошной линией). <span class="important">Водителю запрещено занимать сразу несколько полос!</span>
+                </p>
+                <p>3. <span class="definition">Тротуар</span> - часть дороги, предназначенная для движения пешеходов,
+                    движение транспортных средств по ним запрещено.</p>
+                <p>4. <span class="definition">Обочина</span> - часть дороги, непредназначенная для движения, служит
+                    только для остановки. На ней может отсутствовать асфальтное покрытие (тогда вместо неё будет гравий)
+                    или может иметь асфальтное покрытие (тогда отделена сплошной линией).</p>
+                <p>5. <span class="definition">Трамвайные пути.</span></p>
+                <hr>
+                <p><span class="definition">Перекрёсток</span> - пересечение, примыкание или разветвление дорог на одном
+                    уровне.</p>
+                <p><span class="italic">Выезд и прилегающие территории не являются перекрёстками.</span></p>
+                <p>Перекрёсток может иметь несколько пересечений.</p>
+                <hr>
+                <p>Дороги по отношению друг к другу: равнозначные и неравнозначные.</p>
+                <p><span class="definition">Главная дорога</span> - дорога, на которой водитель имеет преимущество перед
+                    теми, кто на второстепенной дороге.</p>
+                <h3>Знаки главной дороги:</h3>
+                <div class="image-placeholder">
+                    <img src="img/Главная дорога.jpg" alt="Знаки главной дороги">
+                </div>
+                <p>Если знаки отсутствуют, главной дорогой считается та дорога, имеющая твёрдое покрытие (асфальт,
+                    гравий, бетон) по отношению к грунтовой дороге.</p>
+                <p>Обе дороги равнозначные, если они обе имеют твёрдое покрытие.</p>
+                <p><span class="important">Выезды - всегда второстепенные.</span></p>
+                <p><span class="definition">Уступить дорогу</span> - значит не создавать помех!</p>
+                <hr>
+                <p><span class="definition">Транспортное средство</span> - устройство, которое предназначено для
+                    перевозки по дорогам людей и грузов.</p>
+
+                <h3>Транспортные средства:</h3>
+                <p>1. <span class="definition">Механические</span> - транспортные средства, которые приводятся в
+                    движение с помощью двигателя (легковые и грузовые автомобили, мотоциклы, трактора, мопеды).</p>
+                <p>1) <span class="definition">Маршрутные</span> - общего пользования. Двигаются по маршруту, имеют
+                    места остановок. (Автобус, троллейбус и трамвай. Маршрутное такси не является маршрутным
+                    транспортным средством).</p>
+                <p>2) <span class="definition">Немаршрутные.</span></p>
+                <p>2. <span class="definition">Немеханические</span> - велосипеды.</p>
+                <hr>
+                <p><span class="definition">Фактическая масса</span> - масса транспортного средства в конкретный момент
+                    времени.</p>
+                <p><span class="definition">Разрешенная максимальная масса</span> - масса транспортного средства с
+                    грузом, водителем и пассажирами (постоянная).</p>
+                <hr>
+                <p><span class="definition">Остановка</span> - преднамеренное прекращение движения на время не более 5
+                    минут (или более 5 минут, но для посадки/высадки пассажиров или погрузки/отгрузки товаров).</p>
+                <p><span class="definition">Стоянка</span> - преднамеренное прекращение движения на время более 5 минут
+                    (парковка). Не связано с погрузкой товара или посадкой пассажиров.</p>
+                <p><span class="definition">Вынужденная остановка</span> - если транспортное средство неисправно или
+                    препятствие на дороге.</p>
+                <p><span class="definition">Препятствие на дороге</span> — это неподвижный объект на полосе движения
+                    (неисправное или повреждённое транспортное средство, дефект проезжей части, посторонние предметы),
+                    не позволяющий продолжить движение по этой полосе (остановка перед пешеходном перекрёстком - не
+                    является препятствием).</p>
+                <hr>
+                <p><span class="definition">Обгон</span> - опережение одного или нескольких транспортных средств,
+                    связанное с выездом на полосу (сторону проезжей части), предназначенную для встречного движения, и
+                    последующим возвращением на ранее занимаемую полосу (сторону проезжей части).</p>
+                <hr>
+                <h3>Неудовлетворительная видимость:</h3>
+                <p>1. <span class="definition">Недостаточная видимость</span> — это видимость дороги менее 300 метров
+                    в условиях тумана, дождя, снегопада и в сумерки</p>
+                <p>2. <span class="definition">Ограниченная видимость</span> - видимость водителем дороги, ограниченная
+                    рельефом местности, геометрическими параметрами дороги, растительностью, строениями, сооружениями
+                    или другими объектами.</p>
+                <hr>
+                <p><span class="important">Россия - правостороннее движение.</span></p>
+                <hr>
+                <p>В случае вынужденной остановки ТС или ДТП вне населенных пунктов в темное время суток либо в условиях
+                    ограниченной видимости при нахождении на проезжей части или обочине водитель обязан быть одетым в
+                    куртку, жилет с полосами световозвращающего материала, соответствующих требованиям ГОСТа.</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Плавная прокрутка к якорям
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault()
+
+                const target = document.querySelector(this.getAttribute('href'))
+                if (target) {
+                    window.scrollTo({
+                        top: target.offsetTop - 20,
+                        behavior: 'smooth'
+                    })
+                }
+            })
+        })
+
+        // Анимация появления при прокрутке
+        const lessons = document.querySelectorAll('.lesson');
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible')
+                }
+            })
+        }, {
+            threshold: 0.1
+        })
+
+        lessons.forEach(lesson => {
+            observer.observe(lesson)
+        })
+    </script>
+</body>
+
+</html>
