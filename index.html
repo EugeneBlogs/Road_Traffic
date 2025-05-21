@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Конспекты ПДД</title>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <style>
         /* Основные стили */
         :root {
@@ -320,18 +321,6 @@
             }
         }
 
-        /* Эффекты при прокрутке */
-        .lesson {
-            opacity: 0;
-            transform: translateY(20px);
-            transition: opacity 0.4s ease, transform 0.4s ease;
-        }
-
-        .lesson.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
         /* Адаптивность */
         @media (max-width: 768px) {
             .container {
@@ -394,6 +383,15 @@
             font-size: 24px;
             font-weight: bold;
         }
+
+        /* Подвал */
+        footer {
+            text-align: center;
+            margin-top: 40px;
+            padding: 20px;
+            color: #64748b;
+            font-size: 0.9rem;
+        }
     </style>
 </head>
 
@@ -408,7 +406,7 @@
     </header>
 
     <div class="container">
-        <div class="lessons-menu">
+        <div class="lessons-menu" data-aos="fade-down" data-aos-duration="5000">
             <h2>Список уроков</h2>
             <ul class="lessons-list">
                 <li><a href="#lesson1">Урок 1. Общие положения</a></li>
@@ -423,7 +421,7 @@
             </ul>
         </div>
 
-        <div class="lesson" id="lesson1">
+        <div class="lesson" id="lesson1" data-aos="fade-down" data-aos-duration="1000">
             <div class="lesson-header">
                 <h2>УРОК 1. ОБЩИЕ ПОЛОЖЕНИЯ</h2>
             </div>
@@ -525,7 +523,7 @@
             </div>
         </div>
 
-        <div class="lesson" id="lesson2">
+        <div class="lesson" id="lesson2" data-aos="fade-down" data-aos-duration="1000">
             <div class="lesson-header">
                 <h2>УРОК 2. ДОРОЖНЫЕ ЗНАКИ</h2>
             </div>
@@ -672,9 +670,17 @@
             </div>
         </div>
 
+        <footer>
+            <p>Использован материал с сайта «АвтоТренер».</p>
+            <p>Материал законспектировал Евгений Мыльников.</p>
+            <p>Сайт спроектировал DeepSeek.</p>
+        </footer>
     </div>
 
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
+        AOS.init()
+
         // Плавная прокрутка к якорям с учетом фиксированного хедера
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener("click", function (e) {
@@ -699,24 +705,6 @@
                     }
                 }
             })
-        })
-
-        // Анимация появления при прокрутке
-        const lessons = document.querySelectorAll(".lesson")
-        const backToTopBtn = document.querySelector(".back-to-top")
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add("visible")
-                }
-            })
-        }, {
-            threshold: 0.1
-        })
-
-        lessons.forEach(lesson => {
-            observer.observe(lesson)
         })
 
         // Показать/скрыть кнопку "Наверх"
