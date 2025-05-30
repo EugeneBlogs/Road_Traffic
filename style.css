@@ -233,8 +233,8 @@ h1 {
     margin-top: 0;
 }
 
-.lesson-block h4 {
-    color: var(--primary);
+h4 {
+    color: var(--success);
     font-size: 1rem;
     margin: 20px 0 10px 0;
 }
@@ -274,7 +274,7 @@ h1 {
 hr {
     border: none;
     height: 1px;
-    background-color: var(--border);
+    background-color: var(--accent);
     margin: 24px 0;
 }
 
