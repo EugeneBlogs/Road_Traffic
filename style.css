@@ -68,31 +68,51 @@ h1 {
 /* Список уроков */
 .lessons-menu {
     background: white;
-    border-radius: 12px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+    border-radius: 16px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
     margin-bottom: 40px;
     overflow: hidden;
-    border: 1px solid var(--border);
+    border: none;
+    position: relative;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.lessons-menu:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 25px rgba(0, 0, 0, 0.15);
 }
 
 .lessons-menu h2 {
-    background-color: var(--primary);
+    background: linear-gradient(135deg, var(--primary) 0%, #1E40AF 100%);
     color: white;
-    padding: 16px 24px;
+    padding: 18px 24px;
     margin: 0;
-    font-size: 1.25rem;
+    font-size: 1.3rem;
     font-weight: 600;
+    letter-spacing: 0.5px;
+    position: relative;
+}
+
+.lessons-menu h2::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: var(--accent);
 }
 
 .lessons-list {
     list-style: none;
     padding: 0;
     margin: 0;
+    background: rgba(248, 250, 252, 0.7);
 }
 
 .lessons-list li {
-    border-bottom: 1px solid var(--border);
-    transition: background-color 0.2s ease;
+    border-bottom: 1px solid rgba(226, 232, 240, 0.7);
+    transition: all 0.3s ease;
 }
 
 .lessons-list li:last-child {
@@ -102,44 +122,52 @@ h1 {
 .lessons-list a {
     display: flex;
     align-items: center;
-    padding: 16px 24px;
+    padding: 18px 24px;
     text-decoration: none;
     color: var(--dark);
     font-weight: 500;
-    transition: all 0.2s ease;
+    transition: all 0.3s ease;
+    position: relative;
+    background: white;
 }
 
 .lessons-list a:hover {
-    background-color: rgba(37, 99, 235, 0.05);
+    background: rgba(37, 99, 235, 0.05);
     color: var(--primary);
+    padding-left: 28px;
 }
 
 .lessons-list a::before {
     content: "";
     display: inline-block;
-    width: 6px;
-    height: 6px;
+    width: 8px;
+    height: 8px;
     background-color: var(--primary);
     border-radius: 50%;
-    margin-right: 12px;
-    transition: all 0.2s ease;
+    margin-right: 15px;
+    transition: all 0.3s ease;
+    box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.2);
 }
 
 .lessons-list a:hover::before {
     background-color: var(--primary);
-    transform: scale(1.5);
+    transform: scale(1.3);
+    box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.2);
 }
 
 /* Список блоков урока */
 .blocks-list {
     list-style: none;
     padding: 0;
-    margin: 0 0 0 30px;
+    margin: 0 0 0 40px;
     display: none;
+    background: rgba(248, 250, 252, 0.9);
+    border-left: 3px solid var(--border);
 }
 
 .lessons-list li:hover .blocks-list {
     display: block;
+    animation: fadeIn 0.4s ease;
 }
 
 .blocks-list li {
@@ -147,15 +175,17 @@ h1 {
 }
 
 .blocks-list a {
-    padding: 8px 24px;
-    font-size: 0.9rem;
+    padding: 12px 24px 12px 30px;
+    font-size: 0.95rem;
     color: var(--text);
-    opacity: 0.8;
+    opacity: 0.9;
+    background: transparent;
 }
 
 .blocks-list a:hover {
     color: var(--primary);
     opacity: 1;
+    background: rgba(37, 99, 235, 0.03);
 }
 
 .blocks-list a::before {
@@ -164,9 +194,16 @@ h1 {
     width: auto;
     height: auto;
     background-color: transparent;
-    margin-right: 8px;
+    margin-right: 10px;
     color: var(--primary);
     transform: none;
+    font-size: 0.9em;
+    opacity: 0.7;
+}
+
+.blocks-list a:hover::before {
+    transform: translateX(3px);
+    opacity: 1;
 }
 
 /* Урок */
